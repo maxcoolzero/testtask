@@ -1,0 +1,773 @@
+@font-face 
+    font-family: "PT Sans"
+    src : url("../fonts/PT Sans.ttf")
+@font-face 
+    font-family: "PT Sans"
+    src : url("../fonts/PT Serif.ttf")
+@import "bootstrap.css"
+@import '~font-awesome/css/font-awesome.css'
+$text-black: #000000
+$text-white: #ffffff
+$orange: #ff351b
+$gray: #636363
+$footer-gray: #b0afaf
+body 
+    color: $text-black
+    min-width: 320px
+    line-height: 1
+.container, .container-fluid
+    position: relative
+    padding-left: 10px
+    padding-right: 10px
+.text, body, .slidermoney-text
+    font-family: 'PT Sans', sans-serif
+.title, .logo, .statistics-number, .slider-text, .slider-caption, .slider1-fullinfo
+    font-family: 'PT Serif', serif
+.logo
+    font-size: 45px
+.statistics-number    
+    font-size: 42px
+.title 
+    font-size: 24px
+.brand
+    font-size: 20px
+.subtitle, .select
+    font-size: 16px
+.select:after, .statistics-description, .layout1, .subscribe
+    font-size: 14px
+.layout2, .layout1:after, .layout3, .copyright:last-child, .carousel-indicators, .indicators-separator
+    font-size: 12px
+.text, .copyright,
+    font-size: 11px
+.link, .textfield 
+    font-size: 9px
+.lang
+    font-size: 7px
+.moreblock a
+    font-size: 6px
+.title, .subtitle, .statistics-description, .layout2, .address
+    text-transform: capitalize
+.logo, .lang, .link, .select, select, .layout1
+    text-transform: uppercase
+.subtitle
+    color: $orange
+    line-height: 20px
+.text
+    line-height: 16px
+.subtitle
+    letter-spacing: 0.7px
+
+///////////////////////////////
+//      sliders
+///////////////////////////////
+.slider
+    overflow: hidden
+    &-arrow--next, &-arrow--prev
+        font-size: 20px
+        width: 1000px
+        align-items: flex-start
+        z-index: 20
+        &, &:focus
+            opacity: 0.5
+            color: $orange
+        &:hover, 
+            color: $orange
+            opacity: 1
+    &-arrow--next
+        right: -970px
+        padding-left: 10px
+        justify-content: flex-start
+    &-arrow--prev
+        left: -970px
+        padding-right: 10px
+        justify-content: flex-end
+    &-caption
+        font-size: 24px
+    &-subcaption
+        font-size: 18px
+        line-height: 18px
+    &-text
+        font-style: italic
+        line-height: 14px
+    &-background
+        height: 100%
+        position: absolute
+        transform: translateX(-90px)
+    &-picture
+        display: block
+        height: 196px
+        width: 279px
+    &-photo
+        height: 100%
+        position: absolute
+        width: auto
+        left: 0
+        right: 0
+        margin: auto
+    &-names
+        width: 100px
+        position: relative
+    &-blur
+        position: absolute
+        width: 20%
+        opacity: 0.8
+        z-index: 4
+        &--left
+            left: -5px
+            background: linear-gradient(to left, transparent, #fff 40%)
+        &--right
+            right: -5px
+            background: linear-gradient(to right, transparent, #fff 40%)
+.fullinfo
+    position: relative
+    cursor: pointer
+    &:hover 
+        text-decoration: none
+    &:before
+        content: " "
+        border-right: 1px solid $orange
+        position: absolute
+.carousel-item
+    width: 100vw
+    overflow: hidden
+
+.carousel
+    &-indicators
+        padding: 0
+        line-height: 14px
+        &>li
+            text-indent: 0
+            display: none
+            width: auto
+            margin: 0
+            background-color: transparent
+            border: 0
+            color: $text-white
+            &.active
+                display: block
+.indicators-separator
+    padding-top: 14px
+    border-right: 2px solid $orange
+    margin: 0 5px
+.spiderweb
+    opacity: 0.6
+    width: 150px
+    height: 200px
+    position: absolute
+    z-index: 1
+    .left, .right
+        height: 53%
+        transform: skewY(-30deg)
+        &>.row
+            height: 40%
+            margin-bottom: 20%
+        &>.row, .middle-lines
+            border-left: 1px solid $orange
+            border-right: 1px solid $orange
+            box-sizing: content-box
+    .left
+        top: 30px
+    .right
+        top: -30px
+        left: -1px
+=slider($height: 300px, $arrowpos: 0.5, $backgound: white, $caption: $text-white, $subcaption: $text-white, $text: $text-white) 
+    background-color: $backgound
+    &-arrow--next,&-arrow--prev
+        height: $height
+        .fa
+            margin-top: ($height * $arrowpos) - 10px
+    .carousel-item
+        height: $height
+    &-caption
+        color: $caption
+    &-subcaption
+        color: $subcaption
+    &-text 
+        color: $text
+    &-blur
+        height: $height
+=fullinfo($position: left, $color: white, $transform: uppercase, $style: normal, $top: 50px, $size: 6px, $sizeline: 27px) 
+    float: $position
+    color: $color
+    text-transform: $transform
+    top: $top
+    font-size: $size
+    font-style: $style
+    &:hover 
+        color: $color
+    &:before
+        padding-top: $sizeline
+        top: -0.5 * ($top + $sizeline + 10px)
+        #{$position}: 0
+
+.slidersuccess 
+    +slider($height: 414px, $arrowpos: 0.5, $backgound: white, $caption: $text-white, $subcaption: $text-white, $text: $text-white) 
+    &-fullinfo 
+        +fullinfo(left, $orange, capitalize, italic, 50px, 14px, 29px) 
+    &-caption
+        font-size: 23px
+        line-height: 29px
+    &-item
+        margin-top: 220px
+    &-indicators
+        top: 185px
+        right: auto
+        left: 10px
+        margin: 0
+    &-spiderweb
+        top: 414px
+        bottom: 0
+        right: 14px
+        margin: auto
+    .indicators-count
+        color: $text-white
+    .carousel-caption
+
+.sliderrosaburgn
+    +slider(257px, 0.3, $gray) 
+    &-item
+        margin-top: 32px
+    &-caption
+        margin-bottom: 16px
+    &-subcaption
+        margin-bottom: 7px
+        font-size: 20px
+        line-height: 24px
+    &-fullinfo
+        +fullinfo($position: right, $top: 40px, $sizeline: 23px) 
+
+.slidermoney 
+    +slider($height: 353px, $arrowpos: 0.3, $backgound: $gray, $caption: $text-white, $subcaption: $orange, $text: $text-white) 
+    &-item
+        margin-top: 32px
+    &-caption
+        font-size: 23px
+        line-height: 29px
+        margin-bottom: 24px
+    &-subcaption
+        margin-bottom: 7px
+        width: 230px
+    &-text
+        font-style: normal
+    &-fullinfo
+        +fullinfo($position: right, $sizeline: 23px) 
+    .item-content
+        width: 300px
+
+.slidertips
+    +slider(350px, 0.3, $gray) 
+    &-caption
+        margin-bottom: 39px
+    &-author
+    &-item
+        margin-top: 32px
+    &-picture
+        margin-bottom: 8px
+
+.sliderbreast
+    +slider(300px, 0.3, #dddddd, $gray, $orange, #373737) 
+    &-caption
+        margin-bottom: 39px
+    &-subcaption
+        margin-bottom: 17px
+    &-item
+        margin-top: 32px
+        top: 200px
+        left: 18px
+        width: 267px
+        text-align: left
+
+.personal
+    +slider(339px, 0.3, #ffffff, $gray, $orange, #373737) 
+    .carousel-item
+        width: 100%
+    &-names
+        margin-left: 70%
+        margin-top: 23px
+        color: $text-black    
+        font-size: 10px
+    &-fullinfo
+        +fullinfo($position: left, $color: $text-black, $transform: capitalize, $style: normal, $top: 20px, $size: 6px, $sizeline: 7px) 
+    @for $i from 1 through 5 
+        .slide-item:nth-child(#{$i})
+            z-index: calc(5 - #{$i})
+    .carousel-item.active, .carousel-item-next, .carousel-item-prev 
+        display: flex
+
+    .slide-item
+        &:nth-child(n + 3)
+            display: none!important
+        &:first-child
+            margin-left: 7%
+    .carousel-inner .carousel-item-right.active,
+    .carousel-inner .carousel-item-next 
+        transform: translateX(66.666%)
+
+    .carousel-inner .carousel-item-left.active, 
+    .carousel-inner .carousel-item-prev 
+        transform: translateX(-66.666%)
+
+    .carousel-inner .carousel-item-right,
+    .carousel-inner .carousel-item-left
+        transform: translateX(0)
+ 
+///////////////////////////////
+//      header styles
+///////////////////////////////
+.item-content
+    width: 281px
+.header
+    padding-top: 15px
+    &-langcontainer
+        margin-bottom: 0
+    &-headercontent
+        margin-bottom: 30px
+.langcontainer
+    &-lang
+        margin-right: 4px
+.lang
+    &--active 
+            color: $orange        
+.headercontent
+    .logo
+        display: block
+        line-height: 45px
+    &-navigation
+        margin-top: 20px
+    &-textfield
+        margin-bottom: 5px
+.navigation
+    position: relative
+    .link
+        position: relative
+        text-decoration: none
+        color: $text-black
+    .separator
+        border-right: 1px solid $text-black
+.textfield
+    position: absolute
+    right: 0
+    top: -43px
+    min-width: 10px
+    .input
+        outline: none
+        border: none
+        position: absolute
+        top: -2px
+        right: 0
+        padding: 0 30px 0 10px
+        height: 20px
+        border-bottom: 1px solid $gray
+        transform-origin: right bottom
+        transform: scaleX(1)
+        transition: all 0.2s ease-out
+        &:not(:focus) 
+            color: lighten($text-black, 40%)
+        &--hide 
+            transform: scaleX(0)
+            opacity: 0
+    .label
+        position: absolute
+        right: 0
+        top: 0
+
+///////////////////////////////
+//      cookie styles
+///////////////////////////////
+.cookie
+    padding-bottom: 50px
+    &-title
+        color: $gray
+        margin-top: 47px
+    &-select
+        background-color: #ffffff
+        margin-top: 25px
+.select
+    height: 30px
+    color: $orange
+    &:after 
+        content: "\f078"
+        font-family: "FontAwesome"
+        line-height: 30px
+        position: absolute
+        right: 15px
+        top: 0
+        pointer-events: none
+        transition: transform 0.2s ease-out
+    &--active:after
+        transform: rotateX(180deg)
+    select
+        height: 100%
+        width: 100%
+        outline: none
+        border: none
+        background-color: #ffffff
+        border-bottom: 1px solid $gray
+        -webkit-appearance: none
+        -moz-appearance: none
+        appearance: none
+        color: $orange 
+        option
+            color: $text-black    
+   
+.statistics
+    min-height: 126px
+    background-color: $orange
+    padding: 32px 0
+    color: $text-white
+    &-number
+        line-height: 42px 
+    &-description
+        line-height: 14px
+        margin-top: 5px
+
+.rebeccamouth
+    background-image: url('../img/bitmap.jpg')
+    background-size: auto 100%
+    background-position-x: 58%
+    padding-top: 30px
+    height: 309px
+    &-title
+        margin-bottom: 46px
+        color: #2b2828
+    &-subtitle
+    &-text 
+        display: block
+        color: $text-black
+        height: 65px
+        overflow: hidden
+        margin-bottom: 5px
+    &-fullinfo
+        +fullinfo(right, $text-white, uppercase, normal, 36px, 6px, 23px)
+    .item-content
+        width: 211px
+.mark 
+    padding: 0
+    border-right: 1px solid $orange 
+
+.moreblock
+    &-mark
+        padding-top: 23px
+    a
+        margin-top: 7px
+        color: #ffffff
+        text-decoration: none
+        letter-spacing: 0.3px
+
+
+.footer
+    background-color: $gray
+    color: $footer-gray
+    border-bottom: 6px solid $orange
+    padding-top: 33px
+    &-grid
+        margin-bottom: 41px
+    &-subscribe
+        margin-bottom: 41px
+    &-line
+        margin-bottom: 25px
+    &-copyright
+        margin-bottom: 15px
+
+.grid
+    display: grid
+    grid-template-areas: "section1 section2 section5" "section1 section3 section5" "section1 section4 section5" 
+    grid-template-columns: 1fr 1fr 1.2fr
+    &, ul, li
+        padding: 0
+        list-style-type: none
+
+    @for $i from 1 through 5 
+        .section#{$i} 
+            grid-area: section#{$i} 
+    .layout1
+        color: $text-white
+        .layout2
+            color: $footer-gray
+            line-height: 20px
+            &:before
+                content: "—"
+                color: $orange
+                padding-right: 3px
+        .layout3
+            color: $footer-gray
+            text-transform: none
+            line-height: 20px
+        .address
+            margin-bottom: 10px
+
+.subscribe
+    line-height: 12px
+    color: $text-white
+    &-brand
+        margin-top: 23px
+.brand
+    line-height: 20px
+    color: #afafaf
+    margin-right: 20px
+    transition: color 0.2s ease-out
+    &:hover 
+        color: $text-white
+
+.line
+    &-item
+        height: 22px
+        border-right: 1px solid $orange
+        &:first-child
+            border-left: 1px solid $orange
+
+
+.copyright
+    letter-spacing: -0.1px
+
+@media (min-width: 576px) 
+    .container, .container-fluid
+        padding-left: 15px
+        padding-right: 15px
+    .slider
+        &-background 
+            transform: translateX(0)
+    .slider-arrow--next
+        right: -980px
+    .slider-arrow--prev
+        left: -980px
+    .personal
+        &-names
+            margin-left: 80%
+            margin-top: 23px
+        .slide-item
+            &:nth-child(-n + 4)
+                display: block!important
+            &:first-child
+                margin-left: -15%
+        .slider-blur
+            z-index: 5
+        .carousel-inner .carousel-item-right.active,
+        .carousel-inner .carousel-item-next 
+            transform: translateX(33%)
+
+        .carousel-inner .carousel-item-left.active, 
+        .carousel-inner .carousel-item-prev 
+            transform: translateX(-33%)
+
+        .carousel-inner .carousel-item-right,
+        .carousel-inner .carousel-item-left
+            transform: translateX(0)
+@media (min-width: 768px) 
+
+    //////////////// sliders
+    .slider
+        &-background 
+            height: auto
+            width: 100%
+    .sliderrosaburgn
+        .item-content 
+            width: 360px
+    .slidertips
+        +slider(300px, 0.3, $gray) 
+        .item-content
+            width: 216px
+        &-arrow--next
+            right: -950px
+        &-picture
+            width: 183px
+            height: auto
+    .sliderbreast
+        +slider(300px, 0.3, #dddddd, $gray, $orange, #373737) 
+        &-arrow--next
+            right: -890px
+        .item-content
+            width: 216px
+    .personal
+        &-names
+            margin-left: 80%
+            margin-top: 23px
+        .slide
+            &-item
+                &:nth-child(n + 3)
+                    display: block!important
+                &:first-child
+                    margin-left: -11%
+        .slider-blur
+            z-index: 5
+        .carousel-inner .carousel-item-right.active,
+        .carousel-inner .carousel-item-next 
+            transform: translateX(25%)
+
+        .carousel-inner .carousel-item-left.active, 
+        .carousel-inner .carousel-item-prev 
+            transform: translateX(-25%)
+
+        .carousel-inner .carousel-item-right,
+        .carousel-inner .carousel-item-left
+            transform: translateX(0)
+    .rebeccamouth
+        background-size: 100% auto
+        background-position-y: bottom
+        padding-left: 75px
+    .statistics
+        padding: 42px 0
+        &-number:after
+            content: ""
+            position: absolute
+            padding-top: 32px
+            border-right: 2px solid $text-white
+            right: 0
+            bottom: 5px
+        &-description
+            margin: 0
+    .grid
+        grid-template-columns: 1fr 1fr 1fr 1fr
+        grid-template-areas: "section1 section2 section3 section5" "section1 section2 section4 section5"
+        grid-template-rows: 30px 
+    .header
+        padding-top: 15px
+        &-langcontainer
+            margin-bottom: 12px
+        &-headercontent
+            margin-bottom: 0
+    .textfield
+        position: relative
+        top: 0
+        right: 0
+    .link, .textfield 
+        font-size: 12px
+    .footer, .header
+        .container
+            max-width: 100%
+
+@media (min-width: 1024px) 
+    .header,.footer
+        .container 
+             max-width: 820px
+    .slidertips, .sliderbreast
+        .item-content
+                width: 280px       
+        &-arrow--next
+            right: -850px
+    .grid
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+        grid-template-areas: "section1 section2 section3 section4 section5"
+        grid-template-rows: 150px 
+
+@media (min-width: 1280px)
+    .statistics-number    
+        font-size: 70px
+    .title,.slider-caption
+        font-size: 34px
+    .fullinfo
+        font-size: 24px
+    .brand
+        font-size: 21px
+    .subtitle, .slider-subcaption
+        font-size: 30px
+        line-height: 30px
+    .select
+        font-size: 28px
+    .select:after, .statistics-description, .layout1, .subscribe, .text
+        font-size: 18px
+    .slider-names
+        font-size: 17px
+    .layout2, .layout1:after, .layout3, .carousel-indicators, .indicators-separator
+        font-size: 16px
+    .text
+        line-height: 26px
+    .link, .textfield 
+        font-size: 20px
+    .lang
+        font-size: 12px
+
+    .slider
+        &-blur
+            width: 18%
+        &-arrow--next,&-arrow--prev
+            font-size: 40px
+        
+    .header, .footer
+        .container
+            max-width: 100%
+
+    .slidersuccess
+        +slider($height: 690px) 
+        &-fullinfo 
+            +fullinfo(left, $orange, capitalize, italic, 74px, 24px, 54px) 
+        .item-content
+            width: 645px
+        &-caption
+            font-size: 48px
+            line-height: 48px
+        &-item
+            margin-top: 365px
+        &-indicators
+            top: 320px
+            font-size: 20px
+        &-spiderweb 
+            top: 690px
+            width: 220px
+            height: 250px
+            .left, .right
+                height: 45%
+                .row, .middle-lines
+                    border-left: 2px solid #ff351b
+                    border-right: 2px solid #ff351b
+    .sliderrosaburgn
+        +slider(394px, 0.3, $gray)  
+        &-fullinfo 
+            +fullinfo(right, $text-white, uppercase, normal, 49px, 10px, 39px) 
+        .item-content
+            width: 620px
+        .carousel-item 
+            height: 394px
+        &-item
+            margin-top: 60px
+    .personal
+        +slider(564px, 0.3, #ffffff, $gray, $orange, #373737) 
+        &-names
+            width: 180px
+        &-fullinfo
+            +fullinfo($position: left, $color: $text-black, $transform: capitalize, $style: normal, $top: 20px, $size: 10px, $sizeline: 7px)
+    .slidermoney
+        +slider($height: 589px, $arrowpos: 0.3, $backgound: $gray, $caption: $text-white, $subcaption: $orange, $text: $text-white) 
+        .item-content, &-subcaption
+            width: 440px
+        &-item
+            margin-top: 60px
+        &-caption
+            margin-bottom: 80px
+        &-subcaption
+            margin-bottom: 10px
+        &-fullinfo
+            +fullinfo(right, $text-white, uppercase, normal, 57px, 10px, 39px)  
+    .slidertips
+        +slider(500px, 0.3, $gray)
+        &-picture
+            width: 300px
+    .sliderbreast
+        +slider(500px, 0.3, #dddddd, $gray, $orange, #373737) 
+        .item-content
+            width: 351px
+    .cookie
+        min-height: 248px
+        padding-top: 60px
+
+    .statistics
+        height: 210px
+        padding: 80px 0
+    .rebeccamouth
+        height: 516px
+        .item-content
+            width: 352px
+        &-text
+            height: 107px
+        &-fullinfo
+            +fullinfo(right, $text-white, upppercase, normal, 37px, 10px, 23px)
+    .footer
+        .line-item
+            height: 45px
+    
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi)
+    .rebeccamouth
+        background-image: url('../img/bitmap\@2x.jpg')
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi)
+    .rebeccamouth
+        background-image: url('../img/bitmap\@3x.jpg')
